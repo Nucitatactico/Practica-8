@@ -26,8 +26,8 @@ public class PruebaBBusqueda {
         System.out.println("\nRecorrido Posorden:");
         abb.posorden(abb.raiz);
 
-        // Imprimir árbol de forma clara
-        System.out.println("\nRepresentación del Árbol:");
+        // Imprimir arbol de forma clara
+        System.out.println("\nRepresentacion del Arbol:");
         abb.imprimirArbol();
     }
 }

@@ -34,7 +34,7 @@ public class PruebaBinario {
         arbol.insertar(nodo6, 8, false);  
 
      
-        System.out.println("Imprimir árbol:");
+        System.out.println("Imprimir arbol:");
         arbol.imprimirArbol();
 
         arbol.eliminar(4);

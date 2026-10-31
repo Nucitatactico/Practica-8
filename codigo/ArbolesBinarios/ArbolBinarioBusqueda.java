@@ -119,7 +119,7 @@ public class ArbolBinarioBusqueda {
 
     public void imprimirArbol() {
         if (raiz == null) {
-            System.out.println("El árbol está vacío.");
+            System.out.println("El arbol esta vacio.");
             return;
         }
 
@@ -128,10 +128,10 @@ public class ArbolBinarioBusqueda {
         int nivel = 0;
 
         while (!queue.isEmpty()) {
-            int nivelTamaño = queue.size();
+            int nivelTamano = queue.size();
             System.out.println("Nivel " + nivel + ":");
 
-            while (nivelTamaño > 0) {
+            while (nivelTamano > 0) {
                 Nodo actual = queue.poll();
                 System.out.print("[" + actual.valor + "] ");
 
@@ -145,7 +145,7 @@ public class ArbolBinarioBusqueda {
                 }
 
                 System.out.print(" | ");
-                nivelTamaño--;
+                nivelTamano--;
             }
 
             System.out.println("\n");

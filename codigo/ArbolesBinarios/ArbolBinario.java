@@ -15,22 +15,22 @@ public class ArbolBinario {
         if (padre == null) {
             if (raiz == null) {
                 raiz = nuevoNodo;
-                System.out.println("Se estableció " + valor + " como raíz.");
+                System.out.println("Se establecio " + valor + " como raiz.");
             } else {
-                System.out.println("Error: La raíz ya está establecida.");
+                System.out.println("Error: La raiz ya esta establecida.");
             }
         } else {
             if (esIzquierdo) {
                 if (padre.hIzquierdo == null) {
                     padre.hIzquierdo = nuevoNodo;
-                    System.out.println("Se insertó " + valor + " como hijo izquierdo de " + padre.valor);
+                    System.out.println("Se inserto " + valor + " como hijo izquierdo de " + padre.valor);
                 } else {
                     System.out.println("Error: El nodo " + padre.valor + " ya tiene hijo izquierdo.");
                 }
             } else {
                 if (padre.hDerecho == null) {
                     padre.hDerecho = nuevoNodo;
-                    System.out.println("Se insertó " + valor + " como hijo derecho de " + padre.valor);
+                    System.out.println("Se inserto " + valor + " como hijo derecho de " + padre.valor);
                 } else {
                     System.out.println("Error: El nodo " + padre.valor + " ya tiene hijo derecho.");
                 }
@@ -159,7 +159,7 @@ public class ArbolBinario {
    
  public void imprimirArbol() {
     if (raiz == null) {
-        System.out.println("El árbol está vacío.");
+        System.out.println("El arbol esta vacio.");
         return;
     }
 
@@ -168,10 +168,10 @@ public class ArbolBinario {
     int nivel = 0;
 
     while (!queue.isEmpty()) {
-        int nivelTamaño = queue.size();
+        int nivelTamano = queue.size();
       
 
-        while (nivelTamaño > 0) {
+        while (nivelTamano > 0) {
             Nodo actual = queue.poll();
             System.out.print("[" + actual.valor + "] ");
 
@@ -185,7 +185,7 @@ public class ArbolBinario {
             }
 
             System.out.print(" | ");
-            nivelTamaño--;
+            nivelTamano--;
         }
 
         System.out.println("\n");
