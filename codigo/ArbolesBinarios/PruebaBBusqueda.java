@@ -19,6 +19,9 @@ public class PruebaBBusqueda {
         abb.insertar(60);
         abb.insertar(80);
 
+	for(int i=1;i<=7;i++)
+		abb.insertar(15+i*10);
+
         System.out.println("Recorrido Inorden:");
         abb.inorden(abb.raiz);
         System.out.println("\nRecorrido Preorden:");
@@ -29,5 +32,17 @@ public class PruebaBBusqueda {
         // Imprimir arbol de forma clara
         System.out.println("\nRepresentacion del Arbol:");
         abb.imprimirArbol();
+
+	for(int i=1;i<=5;i++)
+		abb.eliminar(15*i);
+
+        System.out.println("\nRepresentacion del Arbol tras borrar multiplos de 15:");
+        abb.imprimirArbol();
+        System.out.println("Recorrido Inorden:");
+        abb.inorden(abb.raiz);
+        System.out.println("\nRecorrido Preorden:");
+        abb.preorden(abb.raiz);
+        System.out.println("\nRecorrido Posorden:");
+        abb.posorden(abb.raiz);
     }
 }

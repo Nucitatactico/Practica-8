@@ -10,38 +10,47 @@
  * @author Edgar
  */
 public class PruebaBinario {
-    public static void main(String[] args) {
-        ArbolBinario arbol = new ArbolBinario();
+	public static void main(String[] args) {
+		ArbolBinario arbol = new ArbolBinario();
 
-        arbol.insertar(null, 1, true);
-        Nodo raiz = arbol.raiz;
+		arbol.insertar(null, 1, true);
+		Nodo raiz = arbol.raiz;
 
-        arbol.insertar(raiz, 2, true);   
-        arbol.insertar(raiz, 3, false);  
+		arbol.insertar(raiz, 2, true);   
+		arbol.insertar(raiz, 3, false);  
 
-        Nodo nodo2 = arbol.buscar(2);
-        arbol.insertar(nodo2, 4, false); 
-        
-         Nodo nodo3 = arbol.buscar(3);
-          arbol.insertar(nodo3, 14, true); 
-      
-        Nodo nodo4 = arbol.buscar(4);
-        arbol.insertar(nodo4, 6, false);   
-       
-        Nodo nodo6 = arbol.buscar(6);
-        
-        arbol.insertar(nodo6, 7, true);  
-        arbol.insertar(nodo6, 8, false);  
+		Nodo nodo2 = arbol.buscar(2);
+		arbol.insertar(nodo2, 4, false); 
 
-     
-        System.out.println("Imprimir arbol:");
-        arbol.imprimirArbol();
+		Nodo nodo3 = arbol.buscar(3);
+		arbol.insertar(nodo3, 14, true); 
 
-        arbol.eliminar(4);
-    
-        arbol.imprimirArbol();
-        
-        
-        
-    }
+		Nodo nodo4 = arbol.buscar(4);
+		arbol.insertar(nodo4, 6, false);   
+
+		Nodo nodo6 = arbol.buscar(6);
+
+		arbol.insertar(nodo6, 7, true);  
+		arbol.insertar(nodo6, 8, false);  
+
+
+		System.out.println("Imprimir arbol:");
+		arbol.imprimirArbol();
+
+		arbol.eliminar(1);
+		arbol.imprimirArbol();
+
+		System.out.println("Preorden:");
+		arbol.preorden(arbol.raiz);
+
+		System.out.printf("\nInorden:\n");
+		arbol.inorden(arbol.raiz);
+
+		System.out.printf("\nPosorden:\n");
+		arbol.posorden(arbol.raiz);
+		System.out.println("");
+
+
+
+	}
 }
