@@ -1,0 +1,206 @@
+\input{plantilla}   % Asegúrate de que el archivo se llame plantilla.tex
+
+\begin{document}
+
+% ============================================================================
+% ENCABEZADO
+% ============================================================================
+
+{\centering \section*{ESTRUCTURAS DE DATOS Y ALGORITMOS II}\par}
+{\centering \section*{PRACTICA 8 Árboles parte I}\par}
+\section*{Objetivo}
+El estudiante conocerá e identificará las características de la estructura no-lineal árbol
+\section*{Objetivo de clase:} El alumno analizará las implementaciones proporcionadas y conocerá la forma
+en la que se pueden implementar estas estructuras de datos
+% ============================================================================
+% ACTIVIDADES PARA EL DESARROLLO DE LA PRÁCTICA
+% ============================================================================
+
+{\centering \section*{ ACTIVIDADES PARA EL DESARROLLO DE LA PRÁCTICA}\par}
+% ----------------------------------------------------------------------------→→→→→→
+% ACTIVIDAD 1
+% ----------------------------------------------------------------------------
+\begin{ejercicio}{Ejercicio 1.- Análisis de la Implementación de Grafos en Java}
+Revisa la implementación proporcionada de un árbol binario, en dicha implementación se define el árbol binario con las operaciones de agregar, buscar eliminar e imprimir
+    \begin{enumerate}
+    \item Explica cada uno de los métodos que se encuentran en la clase Arbol binario de manera
+detallada
+    \item Dibuja el árbol que se construye inicialmente en el programa PruebaBinario
+    \item En el programa se elimina el nodo 8 y e vuelve a imprimir el árbol. A partir de esta eliminación
+observa cómo queda el nuevo árbol, ahora elimina el nodo 1 en lugar del nodo 8 y nuevamente
+observa el árbol resultante. A partir de esto explica cómo funciona la eliminación
+    \item Crea un nuevo programa “PruebaBinario2” y ahora agrega las instrucciones para construir el
+siguiente árbol binario:
+\captura{img1.png}
+    \item  Que ventajas y desventajas observas en esta implementación de árbol binario
+    \item Imprime el recorrido preorden, inorden y postorden en ambos programas y realiza tus
+comentarios
+    \end{enumerate}
+\end{ejercicio}
+\captura{img2.png}
+\begin{respuesta}{1.-}
+    \begin{itemize}
+        \item ArbolBinario(): Este constructor nos permite inicializar el Nodo del arbol como null, ya que esta estructura autorefrenciada no tiene en un principio algun valor pero ahora tenemos el nodo para empezarlo.
+        \item insertar():
+        
+        Esta estructura primero crea un nuevo nodo con el valor que se le pasa al metodo, y en caso de que la raiz del arbol sea null se asgina como la raiz del arbol o sub-arbol al nuevo, aunque de no ser así entonces pasamos a verificar si el parametro boleano es true porque de ser así se trata de colocar como el hijo izquierdo del nodo indicado donde si ya hay uno solo notifica de que no se peude llevar a cabo y si no se prosigue asginandolo, esto se reproduce de manera analoga con el caso de que el parametro sea false y se quiera poner en el derecho.
+        \item buscar():
+
+        Primero verifica que la raiz del arbol no sea null para evitar buscar sobre arboles vacios y de ahi salta a la logica de un arbol con contenido. Decalra una cola la cual en un principio encola al nodo raiz y mientras haya contenido en esta desencola en un nodo temporal para revisar si el valor es el buscado, en caso de serlo retorna el nodo temporal y de no ser así encola al izquierdo y al derecho del nodo temporal, si no lo encuentra cuando ha terminado devuelve un null.
+
+        \item eliminar() y eliminarMasProfundo():
+
+        Estos dos metodos funcionan en conjunto así que serán explicadas a la par:
+
+        En eliminar tenemos la gestion de casos donde un árbol esta vacio o el unico elemento es la raiz y es la que se quiere eliminar, las cuales se manejan de manera simple ya que si no hay no hace nada y si es solo la raiz y es la que se queire eliminar se asigna como null simplemente.
+
+        Ahora para los otros igual que en buscar declaramos una cola que busca el nodo el cual queremos eliminar siguienedo esa logica exacta, pero ahora añadimos que el temporal no existe dentro del bucle sino que fuera así que no es temporal ahora. Después de ejecutar la busqueda lo que tenemos en nodos son el KeyNode y temp, siendo KeyNode el nodo a borrar y el temp el ultimo nodo encontrado del árbol, ahora si no se encontró el valor a borrar simplemente no se hace nada y vuelve, pero si se encontró pasamos a deajr el valor del ultimo nodo en una variable y entonces entramos a eliminarMasProfundo().
+
+        En el metodo mencionado buscamos eliminar el ultimo nodo que revisa el algoritmo de busqueda así que tomandolo como parametro empezamos a buscar a su padre y en el momento de encontrarlo asignamos al ultimo nodo como null, ahora teniendolo borrado volvemos a eliminar y en elnodo que un principio queriamos borrar sobreescribimos su valor con el del ultimo nodo, dicho valor lo habiamos guardado antes de eliminarMasProfundo. Así que en escencia estos meteodos solo eliminan al ultimo nodo y asignan el valor del ultimo en donde esta el que se quiere borrar.
+        \item preorden():
+        Mientras haya nodos imprime su valor empezando desde la raiz y de ahi carga en el call stack llamadas a si mismo reservando en esta a las llamdas a los nodos derechos mientras atiende primero a los izqueirdos, y finalmente atendiedno a los derechos así muestra:
+        \begin{enumerate}
+            \item Raiz
+            \item Sub-árbol izquierdo
+            \item Sub-árbol derecho
+        \end{enumerate}
+        \item inorden():
+        Mientras haya nodos imprime su valor empezando desde los izquierdos y de ahi carga en el call stack llamadas a si mismo reservando en esta a las llamdas a los nodos derechos mientras atiende primero a los izqueirdos, acabadndo con los izqeuirdos imprime la raiz y finalmente atiende a los derechos así muestra:
+        \begin{enumerate}
+            \item Sub-árbol izquierdo
+            \item Raiz
+            \item Sub-árbol derecho
+        \end{enumerate}
+        \item Posorden():
+        Mientras haya nodos imprime su valor empezando desde los izquierdos y de ahi carga en el call stack llamadas a si mismo reservando en esta a las llamdas a los nodos derechos mientras atiende primero a los izqueirdos, acabadndo con los izqeuirdos atiende a los derechos y finalmente imprime la raiz, así muestra:
+        \begin{enumerate}
+            \item Sub-árbol izquierdo
+            \item Sub-árbol derecho
+            \item Raiz
+        \end{enumerate}
+        \item imprimirArbol():
+        Para este punto igual que en cualquier otro metodo se contempla el problema de un arbol vacio imprimiendo que esta vacio en ese caso, pero cuando hay lo que ahace primero es decalrar una cola la cual empieza tomando la raiz y entonces dado el numero de elementos de la cola se itera un bucle el cual imprimme el nivel de profundidad y luego desencola los elmentos dentro para imprimirlos y verificar si hay un nodo en estsos nodos para asi encolar un nivel completo de profundidad del arbol y verificar a su vez si estos tienen a sus hijos para encolarlos. Basicmanete es un recorrido por BFS que menciona al nodo y sus hijos al mismo tiempo.
+    \end{itemize}
+\end{respuesta}
+\begin{respuesta}{2.-Dibujo del árbol}
+    \captura{img3.jpeg}
+\end{respuesta}
+\begin{respuesta}{3.-}
+    \captura{img4.png}
+    En realidad no se elimina el nodo 8, se elimna el nodo 4 hasta lo dice el codigo y de hecho se nota como se conserva el valor dentro del arbol. La eliminación se explico de manera más vasta anteriormente y se puede resumir a que cuadno se busca eliminar un nodo se toma el nodo más a la derecha y en el ultimo nivel que haya y se toma su valor, se elimina ese nodo y se coloca en el nodo del valor que se buscaba eliminar.
+\end{respuesta}
+\begin{respuesta}{4.-}
+    Para esto simplemente se siguio la logica del otro codigo pero extendiendola al arbol pedido.
+    \captura{img5.png}
+\end{respuesta}
+\begin{respuesta}{5.-}
+    \begin{itemize}
+        \item Ventajas \begin{itemize}
+            \item COnsidero que s muy facil de implmeenntar entonces la legebilidad y sostenebilidad del codigo se potencia
+            \item Es una implementacion directa de lo que vimos de como pasar un arbol cualquiera a un arbol binario
+            \item Permite hacer explicitas las adiciones y eliminaciones sin tener algoritmos coplejos
+            \item Represntar jerarquias de forma simple puede ser una ventaja
+        \end{itemize}
+        \item Desventajas\begin{itemize}
+            \item No hay un orden de elementos entonces tenemos casi siempre un arbol desequilibrado
+            \item No tiene alguna aplicacion ya que funciona simplemente como una lista ligada a la que solo puedes llegar a dos elementos pero no tienen algo en especial que te diga si a la izquierda hay un elemnto que se busca o así
+        \end{itemize}
+    \end{itemize}
+\end{respuesta}
+\begin{respuesta}{6.-}
+    \captura{img6.png}
+    \captura{img7.png}
+    Considero que no hay mucho que decir porque se demuestra que los datos no tienen un orden que permita interpretar la alida fuera de lo que se dijo del orden de recorrer para imrpimr las ramas del arbol, aunque se puede observar como se imprime la raiz en diferente orden y se le va tomando menor improtancia en la lectura por así decirlo dejandola de principio o al final, si se puede decir, aunque considero que estas formas de imprimir resultan poco eficeintes para interpretarse ya que no esta ordenado como para poder interpetar facilmente la diferencia de ordenes.
+\end{respuesta}
+\begin{ejercicio}{Ejercicio 2.- Árbol binario de búsqueda.}
+    También se proporciona una implementación de Árbol Binario de Búsqueda basada en la implementación
+de árbol general
+\begin{enumerate}
+    \item Explica las principales diferencias en los métodos del árbol Binario de búsqueda (insertar, buscar
+y eliminar)
+    \item En el programa PruebaBBusqueda agrega algunos nodos más al árbol y después realiza un par de
+eliminaciones. Explica cómo funciona la eliminación (Se sugiere apoyarte de dibujos)
+    \item En qué casos crees que sea bueno usar el árbol binario general y en que casos el de búsqueda
+    \item Agrega operaciones en el programa para validar el funcionamiento de preorden inorden
+postorden y búsqueda de nodos
+\end{enumerate}
+\end{ejercicio}
+\captura{img8.png}
+\begin{respuesta}{1.-}
+    \begin{itemize}
+        \item Insertar():
+        
+        Este metodo lo que tiene de diferente es bastante ya que en el arbol binario normal tenemos simplmeente que conocer el padre y si es izquierda la insercion, pero ahora es conocer unicamente el valor que queremos insertar ya que apoyandonos den metodo recursivo insertarRec empezamos a usar la definicion recursiva del arbol comparando el valor que buscamos insertar, pues si es menor que el nodo va a la izquierda y si es mayor a la derecha, pero no hace esto sin más sino que al devolver un nodo el metodo asgina al hijo izqueirdo o derecho el nodo como valor siempre y cuando este sea null, siendo ese el caso base, de ahi en adelante empieza a reasignar valores que podría ser algo inutil pero es bastante explicito con la definicion estructural de un arbol. Así siempre se coloca en el lugar adecuado.
+        \item Buscar():
+        
+        Este impelemnta algo bastil en comparacion del buscar del otro árbol ya que conocemos que tenemos un orden en el árbol siendo que a la izqeuirda van menores y a la drecha mayores que un número, entonces cuando busca de manra recursiva estamos aplicando algo similar a quicksort, donde buscamos por partes, pero en este caso ya simplemente tenemos que definir si es mayor o menor que el numero que tenemos meintras vamos descendiendo, algoq ue es incluso más rapido que el quicksort, buscando es O(logN) en el promedio contra O(nLogn) de quick sort, esto es mucho mejor que la busqueda sobre todos los elementos que hace el otro arbol.
+        \item Eliminar()
+
+        Para eliminar implementamos una logica algo parecida a la del arbol binario normal, porque en primera instancia en vez de eliminar el más a la derecha y abajo posible se parte de primero encontrar recurisvamente el nodo del valor que queremos encontrar como si fuera el algoritmo de busqueda descrito antes, peroahora al llegar ahi hay 3 pcasos, contemplados siendo que si no hay nodo izquierdo subimos el nodo derecho a donde estaba y el padre del nodo borrado ahora apunta al hijo derecho, esto se aplica del mismo modo si no hay nodo izqeuirdo pues sube el izqueirdo.
+
+        El tercer caso de borrado que es cuando se tienen ambos hijos es usando el metodo de valor minimom buscar al hijo más a la izquierda del hijo derecho del nodo a borrar y tomar su valor para colocarlo en donde estaba el nodo que se queria borrar, y después de eso se vuelve a llamr al metodo recursivo solo para buscar ahora borrar el nodo del que se tomo el valor, siendo que al final de esto el nodo al ser el ultimo hijo no tenidria hijos y se tornaria un null.
+        
+    \end{itemize}
+\end{respuesta}
+\begin{respuesta}{2.-}
+    Para hacer uso de las operaciones inserte puntos medios entre las decenas que habia siendo 15, 25, 35..85, y finalmente tras imprimir borre los multiplos de 15 terminando por mostrar los cambios.
+    \captura{img9.png}
+    \captura{img10.png}
+
+    Para poder reafirmar lo explicado hay que entender que hay 4 casos de borrado en este arbol:
+    \begin{enumerate}
+        \item Borrar una hoja
+
+        Esto es lo más simple pues el nodo se asgina como null.
+        \captura{br1.jpeg}
+        \item Borrar un nodo el cual solo tiene hijo derecho
+
+        Para se mueve la referencia del padre y ahora este en vez a puntar al que se va a borar apunta al hijo derecho del nodo
+        \captura{br2.jpeg}
+        \item Borrar un nodo con solo hijo izquierdo
+
+        Siendo el analogo del caso anterior pero ahora se mueve la referrncia del padre a apuntar al hijo izquierdo.
+        \captura{br3.jpeg}
+        \item Borrar un nodo con ambos hijos
+
+        Este cambia el tono y busca el hijo mas peqeuño de su hijo izqueirdo, al encontrarlo toma su valor y lo copia en si mismo para luego borrar el hijo del cual tomo el valor.
+        \captura{br4.jpeg}
+    \end{enumerate}
+\end{respuesta}
+\begin{ejercicio}{Ejercicio 3.- Opcional para puntos extra: Menú de usuario}
+    Agrega una clase para elaborar un menú en el que el usuario pueda elegir entre trabajar en árboles binarios y árboles binarios de búsqueda.
+
+    Las opciones para el usuario deberán ser las siguientes
+    \begin{center}
+        % --- COLUMNA DE LA IZQUIERDA ---
+        \begin{minipage}[t]{0.45\textwidth}
+            \textbf{1.- Arboles binarios}
+            \begin{enumerate}
+                \item Insertar dato
+                \item Eliminar dato
+                \item Buscar dato
+                \item imprimir árbol
+                \item Notación Prefija (preorden)
+                \item Notación Infija (inorden)
+                \item Notación Postfija (postorden)
+            \end{enumerate}
+        \end{minipage}
+        \hfill % Crea un espacio elástico para separar las columnas
+        % --- COLUMNA DE LA DERECHA ---
+        \begin{minipage}[t]{0.45\textwidth}
+            \textbf{2.- Árboles Binarios de búsqueda}
+            \begin{enumerate}
+                \item Insertar
+                \item Eliminar
+                \item Buscar
+                \item imprimir 
+                \item Preorden
+                \item Inorden
+                \item Postorden
+            \end{enumerate}
+        \end{minipage}
+    \end{center}
+\end{ejercicio}
+\section*{CONCLUSION}
+
+\end{document}
