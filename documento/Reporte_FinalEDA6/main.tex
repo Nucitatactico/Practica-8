@@ -167,6 +167,19 @@ postorden y búsqueda de nodos
         \captura{br4.jpeg}
     \end{enumerate}
 \end{respuesta}
+\begin{respuesta}{3.-}
+    El árbol binario general podría servir para dar jerarquías entre objetos del mismo o de distintos tipos, también puede establece relaciones y se puede utilizar para otros algoritmos (como el heap sort).
+    
+    El árbol binario de busqueda es más util para almacenar elemntos que posteriormente se van a buscar, este tipo de árbol no limita que los nodos sean de un mismo objeto o de un objeto simple, permitiendo almacenar estructuras más complejas dentro del árbol. 
+\end{respuesta}
+\begin{respuesta}{4.-}
+    Para comprobar los distintos tipos de recorridos y la busqueda, se imprimió cada elemento que iba recorriendo el árbol, de está forma sabemos como se va recorriendo el árbol y que valores imprime antes o después de su recorrido.
+
+    \capturacolumna{img11.png}
+    \capturacolumna{img12.png}
+    \capturacolumna{img13.png}
+    \capturacolumna{img14.png}
+\end{respuesta}
 \begin{ejercicio}{Ejercicio 3.- Opcional para puntos extra: Menú de usuario}
     Agrega una clase para elaborar un menú en el que el usuario pueda elegir entre trabajar en árboles binarios y árboles binarios de búsqueda.
 
@@ -201,6 +214,31 @@ postorden y búsqueda de nodos
         \end{minipage}
     \end{center}
 \end{ejercicio}
+
+    Para realizar el menu se creo una clase Menu la cual cuenta con los siguientes métodos estáticos:
+    \begin{itemize}
+        \item  ingresar - Este método acepta una cadena la cual le va a mostrar al usuario para que tenga una idea de lo que va a ingresar, posteriormente le pide al usuario una cdena y la regresa.
+        \item  menu - Este método acepta una arreglo de cadenas, las cuales va a imprimir para mostrar al usuario las opciones disponibles, donde el primer elemento del arreglo es el título del menu, posteriormente le va a pedir ingresar al usuario su opcion la cual va a devolver, al utilizar el método ingresar lo tiene que castear antes de regresar el valor numérico.
+        \item operacionesBinarioBusqueda - Este método sirve como un sbmenu para realizar las operaciones dentro de un árbol binario de busqueda, utiliza un ciclo do-while con ayuda del método menu y un switch. Para las entradas del usuario utiliza el métoso ingresar previamente explicado.
+        \item  operacionesBinario - Este método es similar al anterior con la diferencia de que se utiliza, como su nombre lo dice, sólo para árboles binarios. 
+        \item main - Es dónde se ejecuta el menu principal que deja elegir si se hacen las operaciones dentro de un árbol binario o uno de busqueda, también es donde se declaran los objetos ArbolBinario y ArbolBinarioBusqueda, que se mandan a los métodos de operaciones, por lo que no se pierden los datos que el usuario manejo si es que se llega a salir de los submenus.
+    \end{itemize}
+
+
+    \capturacolumna{img15.png}
+    \capturacolumna{img16.png}
+    \capturacolumna{img17.png}
+    \capturacolumna{img18.png}
+    \capturacolumna{img19.png}
+    \capturacolumna{img20.png}
+    \capturacolumna{img21.png}
+    \capturacolumna{img22.png}
+    \capturacolumna{img23.png}
+    \capturacolumna{img24.png}
+    \capturacolumna{img25.png}
+
 \section*{CONCLUSION}
+
+\textbf{Frías Hernández Edmond Antonio: } El uso de árboles binarios, al igual que los grafos, establecen una estructura de datos no lineal, lo cual puede generar diferentes relaciones entre los datos, una de esas relaciones puede ser la forma en la que se almacenan los datos para su posterior busqueda, de ahí sale el árbol binario de busqueda. Junto con el árbol binario general y el árbol binario de busqueda se pueden realizar distintas soluciones para resolver problemas.
 
 \end{document}

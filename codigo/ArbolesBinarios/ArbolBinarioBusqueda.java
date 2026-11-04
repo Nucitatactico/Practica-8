@@ -1,16 +1,6 @@
-
 import java.util.LinkedList;
 import java.util.Queue;
 
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
-/**
- *
- * @author Edgar
- */
 public class ArbolBinarioBusqueda {
     public Nodo raiz;
 
@@ -44,6 +34,8 @@ public class ArbolBinarioBusqueda {
         if (nodo == null || nodo.valor == valor) {
             return nodo;
         }
+
+        //System.out.println("\nNodo visitado " + nodo.valor);
 
         if (valor < nodo.valor) {
             return buscarRec(nodo.hIzquierdo, valor);
@@ -85,33 +77,37 @@ public class ArbolBinarioBusqueda {
         return nodo.valor;
     }
 
-
-
     public void inorden(Nodo nodo) {
         if (nodo == null) {
             return;
         }
+
+        //System.out.println("\nNodo visitado: " + nodo.valor);
+
         inorden(nodo.hIzquierdo);
         System.out.print(nodo.valor + " ");
         inorden(nodo.hDerecho);
     }
 
-
-
     public void preorden(Nodo nodo) {
         if (nodo == null) {
             return;
         }
+
+        //System.out.println("\nNodo visitado: " + nodo.valor);
+
         System.out.print(nodo.valor + " ");
         preorden(nodo.hIzquierdo);
         preorden(nodo.hDerecho);
     }
 
-
     public void posorden(Nodo nodo) {
         if (nodo == null) {
             return;
         }
+
+        //System.out.println("\nNodo visitado: " + nodo.valor);
+
         posorden(nodo.hIzquierdo);
         posorden(nodo.hDerecho);
         System.out.print(nodo.valor + " ");

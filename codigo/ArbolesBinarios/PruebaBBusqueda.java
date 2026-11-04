@@ -44,5 +44,8 @@ public class PruebaBBusqueda {
         abb.preorden(abb.raiz);
         System.out.println("\nRecorrido Posorden:");
         abb.posorden(abb.raiz);
+    
+        System.out.println("\nIniciando busqueda de la clave 5");
+        System.out.println((abb.buscar(5) != null ? "Encontrado" : "No encontrado"));
     }
 }

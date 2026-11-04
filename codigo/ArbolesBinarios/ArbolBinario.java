@@ -138,6 +138,7 @@ public class ArbolBinario {
         preorden(nodo.hIzquierdo);
         preorden(nodo.hDerecho);
     }
+
     public void inorden(Nodo nodo) {
         if (nodo == null) {
             return;
@@ -146,6 +147,7 @@ public class ArbolBinario {
         System.out.print(nodo.valor + " ");
         inorden(nodo.hDerecho);
     }
+    
     public void posorden(Nodo nodo) {
         if (nodo == null) {
             return;
@@ -157,45 +159,40 @@ public class ArbolBinario {
 
 
    
- public void imprimirArbol() {
-    if (raiz == null) {
-        System.out.println("El arbol esta vacio.");
-        return;
-    }
-
-    Queue<Nodo> queue = new LinkedList<>();
-    queue.add(raiz);
-    int nivel = 0;
-
-    while (!queue.isEmpty()) {
-        int nivelTamano = queue.size();
-      
-
-        while (nivelTamano > 0) {
-            Nodo actual = queue.poll();
-            System.out.print("[" + actual.valor + "] ");
-
-            if (actual.hIzquierdo != null) {
-                queue.add(actual.hIzquierdo);
-                System.out.print("(Izq: " + actual.hIzquierdo.valor + ") ");
-            }
-            if (actual.hDerecho != null) {
-                queue.add(actual.hDerecho);
-                System.out.print("(Der: " + actual.hDerecho.valor + ") ");
-            }
-
-            System.out.print(" | ");
-            nivelTamano--;
+    public void imprimirArbol() {
+        if (raiz == null) {
+            System.out.println("El arbol esta vacio.");
+            return;
         }
 
-        System.out.println("\n");
-        nivel++;
-    }
-}
-    
+        Queue<Nodo> queue = new LinkedList<>();
+        queue.add(raiz);
+        int nivel = 0;
 
-    
-    
+        while (!queue.isEmpty()) {
+            int nivelTamano = queue.size();
+
+            while (nivelTamano > 0) {
+                Nodo actual = queue.poll();
+                System.out.print("[" + actual.valor + "] ");
+
+                if (actual.hIzquierdo != null) {
+                    queue.add(actual.hIzquierdo);
+                    System.out.print("(Izq: " + actual.hIzquierdo.valor + ") ");
+                }
+                if (actual.hDerecho != null) {
+                    queue.add(actual.hDerecho);
+                    System.out.print("(Der: " + actual.hDerecho.valor + ") ");
+                }
+
+                System.out.print(" | ");
+                nivelTamano--;
+            }
+
+            System.out.println("\n");
+            nivel++;
+        }
+    }
 }
 
     
